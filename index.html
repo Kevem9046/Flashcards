@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards Avançados</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>📚 Flashcards Avançados</h1>
+            <div class="stats">
+                <span>Acertos: <span id="correct-count">0</span></span>
+                <span>Erros: <span id="incorrect-count">0</span></span>
+                <span>Total: <span id="total-count">0</span></span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="flashcard-container">
+                <div class="progress">
+                    <span id="current-card">1</span> de <span id="total-cards">0</span>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="question" id="question">
+                        Carregando pergunta...
+                    </div>
+                    
+                    <div class="options-container" id="options">
+                        <!-- As opções serão inseridas pelo JavaScript -->
+                    </div>
+                    
+                    <div class="feedback" id="feedback">
+                        <div class="result" id="result"></div>
+                        <div class="explanation-container">
+                            <h3>Explicação:</h3>
+                            <div class="explanation" id="explanation"></div>
+                        </div>
+                        <button class="next-btn" id="next-btn">Próximo Flashcard</button>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="prev-btn" class="control-btn">Anterior</button>
+                    <button id="reset-btn" class="control-btn">Reiniciar</button>
+                    <button id="add-btn" class="control-btn">Adicionar Flashcard</button>
+                    <button id="export-btn" class="control-btn">Exportar</button>
+                    <button id="import-btn" class="control-btn">Importar</button>
+                </div>
+            </div>
+            
+            <!-- Modal para adicionar novo flashcard -->
+            <div id="add-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Adicionar Novo Flashcard</h2>
+                    <form id="add-flashcard-form">
+                        <div class="form-group">
+                            <label for="question-type">Tipo de Questão:</label>
+                            <select id="question-type" class="question-type-select">
+                                <option value="single">Múltipla Escolha (Uma correta)</option>
+                                <option value="multiple">Múltipla Escolha (Várias corretas)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-question">Pergunta:</label>
+                            <textarea id="new-question" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Opções:</label>
+                            <div class="options-input">
+                                <div class="option-row">
+                                    <input type="text" class="option-input" placeholder="Opção 1" required>
+                                    <input type="checkbox" class="correct-checkbox" data-index="0">
+                                    <span class="correct-label">Correta</span>
+                                </div>
+                                <div class="option-row">
+                                    <input type="text" class="option-input" placeholder="Opção 2" required>
+                                    <input type="checkbox" class="correct-checkbox" data-index="1">
+                                    <span class="correct-label">Correta</span>
+                                </div>
+                                <div class="option-row">
+                                    <input type="text" class="option-input" placeholder="Opção 3" required>
+                                    <input type="checkbox" class="correct-checkbox" data-index="2">
+                                    <span class="correct-label">Correta</span>
+                                </div>
+                                <div class="option-row">
+                                    <input type="text" class="option-input" placeholder="Opção 4" required>
+                                    <input type="checkbox" class="correct-checkbox" data-index="3">
+                                    <span class="correct-label">Correta</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-explanation">Explicação:</label>
+                            <textarea id="new-explanation" required></textarea>
+                        </div>
+                        
+                        <button type="submit">Adicionar Flashcard</button>
+                    </form>
+                </div>
+            </div>
+
+            <input type="file" id="import-file" style="display: none;" accept=".json">
+        </main>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
